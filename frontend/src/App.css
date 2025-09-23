@@ -1,0 +1,24 @@
+
+
+.loginBox{
+  width: 80%;
+  max-width: 400px;
+  min-width: 350px;
+  padding: 20px;
+  color: aquamarine;
+  border: 2px solid black;
+}
+
+.inputBox{
+  width : 100%
+}
+
+.day-mode{
+  background: blue;
+  color: rgb(197, 220, 43);
+}
+
+.night-mode{
+  background:#2C2638;
+  color: rgb(23, 184, 23);
+}
