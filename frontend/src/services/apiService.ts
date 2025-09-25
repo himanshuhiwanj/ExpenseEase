@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 const API = axios.create({
-  baseURL: `${API_URL}/api`, // or your backend URL
+  baseURL: `${API_URL}/api`,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -23,7 +23,7 @@ API.interceptors.request.use(config => {
 // GET request to fetch all transactions
 export const fetchTransactions = async (): Promise<Transaction[]> => {
   try {
-    const response = await API.get(`${API_URL}/api/transactions`);
+    const response = await API.get('/transactions');
     const apiItems = response.data as any[];
 
     // Map backend shape { _id, amount, type, description, source, paymentMode, reference, date }
@@ -75,7 +75,7 @@ function cryptoRandomId(): string {
 
 export const addTransaction = async (transactionData : TransactionPayload) => {
   try {
-  const response = await API.post('http://localhost:3000/api/transactions', transactionData);
+  const response = await API.post('/transactions', transactionData);
   return response.data;
 } catch (error) {   
   // Check if the error is an AxiosError using a type guard
@@ -94,7 +94,7 @@ export const addTransaction = async (transactionData : TransactionPayload) => {
 // Download PDF report of all transactions
 export const downloadReportPdf = async (): Promise<void> => {
   const token = localStorage.getItem('token');
-  const response = await fetch('http://localhost:3000/api/report', {
+  const response = await fetch(`${API_URL}/api/report`, {
     method: 'GET',
     headers: token ? { Authorization: `Bearer ${token}` } : {},
   });

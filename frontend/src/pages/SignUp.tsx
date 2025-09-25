@@ -48,8 +48,11 @@ const SignupPage = () => {
         },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
+      let data: any = {};
+      const text = await response.text();
+      if (text) {
+        try { data = JSON.parse(text); } catch { /* ignore parse error */ }
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');

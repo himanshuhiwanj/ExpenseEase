@@ -17,7 +17,8 @@ const PORT: number = 3000;
 // Connect to the database
 connectDB();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://expense-ease-beta.vercel.app/"}));
 app.use(bodyParser.json());
 
 // Routes

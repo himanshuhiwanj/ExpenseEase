@@ -41,6 +41,7 @@ const LoginPage = () => {
     }
 
     try {
+      console.log("Using backend API 1:", API_URL);
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -48,16 +49,21 @@ const LoginPage = () => {
         },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
+      console.log("Using backend API 2:", API_URL);
+      let data: any = {};
+      const text = await response.text();
+      console.log("Using backend API 3:", API_URL);
+      if (text) {
+        try { data = JSON.parse(text); } catch { /* ignore parse error */ }
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
       }
 
       // Store both the token and the email received from the API response
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('email', data.email);
+      if (data?.token) localStorage.setItem('token', data.token);
+      if (data?.email) localStorage.setItem('email', data.email);
 
       setSuccess(true);
       console.log('User logged in successfully:', data);
