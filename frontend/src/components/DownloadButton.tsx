@@ -1,5 +1,12 @@
+import React from "react";
 
-const DownloadButton = ({ onClick, loading, error, text = 'Download Report' }) => {
+interface DownloadButtonProps {
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  loading?: boolean;
+  error?: string | null;
+  text?: string;
+}
+const DownloadButton: React.FC<DownloadButtonProps> = ({ onClick, loading, error, text = 'Download Report' }) => {
   return (
     <div>
       <button

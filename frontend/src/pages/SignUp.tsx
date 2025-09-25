@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // For password visibility toggle
-import { FcGoogle } from 'react-icons/fc'; // Google icon
-import { FaApple } from 'react-icons/fa'; // Apple icon
 import LeftSection from '../components/signup/LeftSection';
 import { useNavigate } from 'react-router-dom';
 const API_URL = 'http://localhost:3000/api/users/register';
