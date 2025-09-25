@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // For password visibility toggle
 import LeftSection from '../components/signup/LeftSection';
 import { useNavigate } from 'react-router-dom';
-const API_URL = 'http://localhost:3000/api/users/register';
+const API_URL1 = import.meta.env.VITE_API_URL;
+const API_URL = `${API_URL1}/api/users/register`;
 const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate()

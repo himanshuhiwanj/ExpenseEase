@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const API_URL1 = import.meta.env.VITE_API_URL;
 
-const API_URL = 'http://localhost:3000/api/users/login';
+const API_URL = `${API_URL1}/api/users/login`;
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({

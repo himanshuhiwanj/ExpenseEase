@@ -1,11 +1,12 @@
 // src/services/apiService.ts
 import  type {Transaction , TransactionPayload}  from '../types/transaction';
+const API_URL = import.meta.env.VITE_API_URL;
 import axios from 'axios';
 
 
 
 const API = axios.create({
-  baseURL: 'http://localhost:3000/api', // or your backend URL
+  baseURL: `${API_URL}/api`, // or your backend URL
   headers: {
     'Content-Type': 'application/json',
   },
@@ -22,7 +23,7 @@ API.interceptors.request.use(config => {
 // GET request to fetch all transactions
 export const fetchTransactions = async (): Promise<Transaction[]> => {
   try {
-    const response = await API.get('http://localhost:3000/api/transactions');
+    const response = await API.get(`${API_URL}/api/transactions`);
     const apiItems = response.data as any[];
 
     // Map backend shape { _id, amount, type, description, source, paymentMode, reference, date }
